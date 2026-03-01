@@ -6,6 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install addon dependencies
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq subversion > /dev/null 2>&1
+          ./install-deps.sh
+
       - name: Run tests
         uses: osso/wow-ui-sim@master
         with:
